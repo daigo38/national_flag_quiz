@@ -10,10 +10,19 @@ import UIKit
 
 class StartViewController: UIViewController {
 
+    @IBOutlet weak var questionNum: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
+    }
+    
+    @IBAction func Start(_ sender: Any) {
+        let storyboard: UIStoryboard = self.storyboard!
+        let nextView = storyboard.instantiateViewController(withIdentifier: "GameView") as! GameViewController
+        nextView.questionNum = Int(questionNum.text!)!
+        
+        self.present(nextView, animated: true, completion: nil)
     }
     
 
